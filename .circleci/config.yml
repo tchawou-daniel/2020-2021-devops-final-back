@@ -20,9 +20,6 @@ jobs:
     docker:
       - image: circleci/python:3.7.4
         environment:
-          CONDUIT_SECRET: 'something-really-secret'
-          FLASK_APP: autoapp.py
-          FLASK_DEBUG: 1
           DATABASE_URL: postgresql://myuser:somePwd@localhost:5432/myuser
       - image: circleci/postgres:9.6.5-alpine-ram
         environment:
@@ -40,6 +37,9 @@ jobs:
           command: |
             . venv/bin/activate
             sleep 1
+            export CONDUIT_SECRET='something-really-secret'
+            export FLASK_APP=/path/to/autoapp.py
+            export FLASK_DEBUG=1
             flask db upgrade
       - run:
           name: flask test
