@@ -3,10 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.4
-        environment: 
-          CONDUIT_SECRET: 'something-really-secret'
-          FLASK_APP: autoapp.py
-          FLASK_DEBUG: 1
     steps:
       - checkout
       - run: echo "$CONDUIT_SECRET $FLASK_APP $FLASK_DEBUG"
@@ -24,6 +20,9 @@ jobs:
     docker:
       - image: circleci/python:3.7.4
         environment:
+          CONDUIT_SECRET: 'something-really-secret'
+          FLASK_APP: autoapp.py
+          FLASK_DEBUG: 1
           DATABASE_URL: postgresql://myuser:somePwd@localhost:5432/myuser
       - image: circleci/postgres:9.6.5-alpine-ram
         environment:
