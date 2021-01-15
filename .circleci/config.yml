@@ -4,11 +4,11 @@ jobs:
     docker:
       - image: circleci/python:3.7.4
     steps:
-      - checkout
       environment: 
         CONDUIT_SECRET: 'something-really-secret'
         FLASK_APP: autoapp.py
         FLASK_DEBUG: 1
+      - checkout
       - run: echo "$CONDUIT_SECRET $FLASK_APP $FLASK_DEBUG"
       - run:
           name: install pyth dependencies
