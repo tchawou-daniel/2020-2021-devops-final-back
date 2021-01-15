@@ -38,7 +38,7 @@ jobs:
             . venv/bin/activate
             sleep 1
             export CONDUIT_SECRET='something-really-secret'
-            export FLASK_APP=/path/to/autoapp.py
+            export FLASK_APP=autoapp.py
             export FLASK_DEBUG=1
             flask run
             flask db upgrade
