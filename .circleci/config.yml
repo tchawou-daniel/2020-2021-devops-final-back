@@ -5,9 +5,11 @@ jobs:
       - image: circleci/python:3.7.4
     steps:
       - checkout
-      - env: CONDUIT_SECRET='something-really-secret'
-      - env: FLASK_APP=autoapp.py
-      - env: FLASK_DEBUG=1
+      environment: 
+        CONDUIT_SECRET: 'something-really-secret'
+        FLASK_APP: autoapp.py
+        FLASK_DEBUG: 1
+      - run: echo "$CONDUIT_SECRET $FLASK_APP $FLASK_DEBUG"
       - run:
           name: install pyth dependencies
           command: |
