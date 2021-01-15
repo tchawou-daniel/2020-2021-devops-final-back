@@ -1,22 +1,8 @@
-version: 2.1
-workflows:
-  version: 2.1
-  build_circleci:
-    jobs:
-      - build
-      - initialise:
-          requires:
-            - build
-      - docker-build-and-push:
-          requires:
-            - initialise
-      - back-deploy-heroku:
-          requires:
-            - docker-build-and-push
+version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.2-stretch-browsers
+      - image: circleci/python:3.7.4
     steps:
       - checkout
       - run:
@@ -31,7 +17,7 @@ jobs:
           key: v2-dependencies-{{ checksum "requirements/dev.txt" }}
   initialise:
     docker:
-      - image: circleci/python:3.6.2-stretch-browsers
+      - image: circleci/python:3.7.4
         environment:
           DATABASE_URL: postgresql://myuser:somePwd@localhost:5432/myuser
       - image: circleci/postgres:9.6.5
@@ -58,4 +44,12 @@ jobs:
             sleep 1
             flask test
 
-            
+workflows:
+  version: 2
+  build_circleci:
+    jobs:
+      - build
+      - initialise:
+          requires:
+            - build
+
