@@ -37,11 +37,12 @@ jobs:
           command: |
             . venv/bin/activate
             sleep 1
+            flask db upgrade
             export CONDUIT_SECRET='something-really-secret'
             export FLASK_APP=autoapp.py
             export FLASK_DEBUG=1
+            export FLASK_ENV=development
             flask run
-            flask db upgrade
       - run:
           name: flask test
           command: |
