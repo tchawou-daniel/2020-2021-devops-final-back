@@ -1,0 +1,16 @@
+version: 2
+workflows:
+  build_and_test:
+    jobs:
+      - build
+
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers
+    steps:
+      - checkout
+      - run: export CONDUIT_SECRET='something-really-secret'
+      - run: export FLASK_APP=autoapp.py
+      - run: export FLASK_DEBUG=1
