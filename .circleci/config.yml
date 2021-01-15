@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -51,7 +51,7 @@ jobs:
             flask test
 
 workflows:
-  version: 2
+  version: 2.1
   build_circleci:
     jobs:
       - build
