@@ -55,7 +55,6 @@ workflows:
   build_circleci:
     jobs:
       - build
-          context: FinalProject
       - initialise:
           requires:
             - build
