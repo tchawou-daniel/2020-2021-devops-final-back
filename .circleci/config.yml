@@ -46,9 +46,6 @@ jobs:
           name: flask test
           command: |
             . venv/bin/activate
-            export CONDUIT_SECRET='something-really-secret'
-            export FLASK_APP=autoapp.py
-            export FLASK_DEBUG=1  
             sleep 1
             flask test
 
