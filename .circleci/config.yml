@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/python:latest
+      - image: circleci/python:3.7.3
     steps:
       - checkout
       - run:
@@ -21,7 +21,7 @@ jobs:
           key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
   start_test:
     docker:
-      - image: circleci/python:latest
+      - image: circleci/python:3.7.3
         environment:
           DATABASE_URL: postgresql://myuser:somePwd@localhost:5432/mydb
       - image: circleci/postgres:9.6.5
