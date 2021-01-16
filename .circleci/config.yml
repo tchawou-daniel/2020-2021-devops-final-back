@@ -85,15 +85,15 @@ jobs:
     steps: 
         - checkout
         - setup_remote_docker
-        - run: docker image build --tag $IMAGE_NAME:latest .
+        - run: docker image build --tag sipedaniel/backend-finalproject:latest .
         - run: 
             name: Login and Publish to Docker Hub
             command: |
-                docker login -u $DOCKER_HUB_LOGIN -p $DOCKER_HUB_PWD 
-                docker tag $IMAGE_NAME:app $IMAGE_NAME:$CIRCLE_BUILD_NUM
-                docker tag $IMAGE_NAME:app $IMAGE_NAME:latest
-                docker push $IMAGE_NAME:latest
-                docker push $IMAGE_NAME:$CIRCLE_BUILD_NUM
+                docker login -u sipedaniel -p $DOCKER_HUB_PWD 
+                docker tag sipedaniel/backend-finalproject:app sipedaniel/backend-finalproject:$CIRCLE_BUILD_NUM
+                docker tag sipedaniel/backend-finalproject:app sipedaniel/backend-finalproject:latest
+                docker push sipedaniel/backend-finalproject:latest
+                docker push sipedaniel/backend-finalproject:$CIRCLE_BUILD_NUM
 workflows:
   version: 2.1
   build_circleci:
