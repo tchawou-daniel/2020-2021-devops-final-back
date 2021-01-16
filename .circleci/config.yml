@@ -67,9 +67,8 @@ jobs:
             POSTGRES_PORT: 5432
       - save_cache:
           paths:
-          - ./venv
+            - ./venv
           key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
-
 workflows:
   version: 2.1
   build_circleci:
