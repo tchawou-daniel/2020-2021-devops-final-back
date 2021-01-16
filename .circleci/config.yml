@@ -59,7 +59,7 @@ jobs:
           environment: 
             CONDUIT_SECRET: 'something-really-secret'
             FLASK_APP: autoapp.py
-            DATABASE_URL: postgresql://myuser:somePwd@localhost:5432/mydb
+            DATABASE_URL: postgresql://myUser:somePwd@localhost:5432/mydb
             FLASK_DEBUG: 1
             POSTGRES_USER: myUser
             POSTGRES_DB: mydb
@@ -68,6 +68,7 @@ jobs:
       - save_cache:
           paths:
           - ./venv
+          key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
 
 workflows:
   version: 2.1
