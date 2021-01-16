@@ -54,7 +54,7 @@ jobs:
             flask test
           environment: 
             CONDUIT_SECRET: 'something-really-secret'
-            FLASK_APP: /home/circleci/repo/autoapp.py
+            FLASK_APP: autoapp.py
             DATABASE_URL: postgresql://myUser:somePwd@localhost:5432/mydb
             FLASK_DEBUG: 1
             POSTGRES_USER: myUser
