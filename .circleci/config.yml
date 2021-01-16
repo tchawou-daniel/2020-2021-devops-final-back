@@ -44,7 +44,7 @@ jobs:
           environment: 
             CONDUIT_SECRET: 'something-really-secret'
             FLASK_APP: autoapp.py
-            DATABASE_URL: postgresql://myUser:somePwd@localhost:5432/mydb
+            DATABASE_URL: postgresql://myuser:somePwd@localhost:5432/mydb
             FLASK_DEBUG: 1
             POSTGRES_USER: myUser
             POSTGRES_DB: mydb
@@ -59,7 +59,7 @@ jobs:
           environment: 
             CONDUIT_SECRET: 'something-really-secret'
             FLASK_APP: autoapp.py
-            DATABASE_URL: postgresql://myUser:somePwd@localhost:5432/mydb
+            DATABASE_URL: postgresql://myuser:somePwd@localhost:5432/mydb
             FLASK_DEBUG: 1
             POSTGRES_USER: myUser
             POSTGRES_DB: mydb
