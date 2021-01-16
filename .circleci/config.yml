@@ -85,6 +85,3 @@ workflows:
       - start_test:
           requires:
             - build
-       - back-deploy-heroku:
-          requires:
-            - build
