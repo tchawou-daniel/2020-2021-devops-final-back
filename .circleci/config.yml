@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -15,7 +15,7 @@ jobs:
           paths:
             - ./venv
           key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
-  initialise:
+  start_test:
     docker:
       - image: circleci/python:3.7.4
         environment:
@@ -65,3 +65,12 @@ jobs:
           paths:
           - ./venv
           key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
+
+workflows:
+  version: 2.1
+  build_circleci:
+    jobs:
+      - build
+      - start_test:
+          requires:
+            - build
