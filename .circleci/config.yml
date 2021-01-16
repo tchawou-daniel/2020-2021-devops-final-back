@@ -69,7 +69,7 @@ jobs:
           paths:
             - ./venv
           key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
-back-deploy-heroku:
+  back-deploy-heroku:
     docker:
       - image: buildpack-deps:trusty
     steps:
