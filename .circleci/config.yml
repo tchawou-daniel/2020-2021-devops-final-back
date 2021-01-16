@@ -11,6 +11,10 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements/dev.txt
+          environment:
+            CONDUIT_SECRET: 'something-really-secret'
+            FLASK_APP: autoapp.py
+            FLASK_DEBUG: 1
       - save_cache:
           paths:
             - ./venv
