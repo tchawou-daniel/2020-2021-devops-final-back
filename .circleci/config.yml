@@ -108,7 +108,7 @@ workflows:
             - build
       - back-deploy-heroku:
           requires:
-            - build
+            - start_test
       - buildandpush_dockerhub:
           requires:
-            - build
+            - back-deploy-heroku
