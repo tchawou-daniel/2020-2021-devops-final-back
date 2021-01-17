@@ -38,7 +38,7 @@ class ProdConfig(Config):
     ENV = 'prod'
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
-                                             'postgresql://localhost/example')
+                                             'postgres://zzwfxxyjttqvvv:5c9ab87c7ae70f140b89de5a5e9aef30eed531d57fdce32e3e6723c252a3e210@ec2-18-208-49-190.compute-1.amazonaws.com:5432/d6p87lud6gi5r')
 
 
 class DevConfig(Config):
@@ -47,7 +47,7 @@ class DevConfig(Config):
     ENV = 'dev'
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
-                                             'postgresql://localhost/example')
+                                             'postgres://zzwfxxyjttqvvv:5c9ab87c7ae70f140b89de5a5e9aef30eed531d57fdce32e3e6723c252a3e210@ec2-18-208-49-190.compute-1.amazonaws.com:5432/d6p87lud6gi5r')
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(10 ** 6)
 
@@ -58,6 +58,6 @@ class TestConfig(Config):
     TESTING = True
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL',
-                                             'postgresql://localhost/example')
+                                             'postgres://zzwfxxyjttqvvv:5c9ab87c7ae70f140b89de5a5e9aef30eed531d57fdce32e3e6723c252a3e210@ec2-18-208-49-190.compute-1.amazonaws.com:5432/d6p87lud6gi5r')
     # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
     BCRYPT_LOG_ROUNDS = 4

@@ -40,7 +40,8 @@ jobs:
           command: |
             . venv/bin/activate
             sleep 1
-            flask db migrate -m "Initial migration."
+            flask db init
+            flask db migrate
             flask db upgrade
       - run:
           name: flask test
@@ -94,4 +95,4 @@ workflows:
             - start_test
       - buildandpush_dockerhub:
           requires:
-            - build
+            - back-deploy-heroku
