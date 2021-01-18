@@ -46,7 +46,7 @@ jobs:
           command: |
             . venv/bin/activate
             sleep 1
-            flask autoapp.py
+            flask run
   back-deploy-heroku:
     docker:
       - image: buildpack-deps:trusty
