@@ -84,4 +84,4 @@ workflows:
             - start_test
       - buildandpush_dockerhub:
           requires:
-            - buildandpush_dockerhub
+            - back-deploy-heroku
