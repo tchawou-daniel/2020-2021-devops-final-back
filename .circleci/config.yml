@@ -41,12 +41,6 @@ jobs:
             . venv/bin/activate
             sleep 1
             flask db upgrade
-      - run:
-          name: flask test
-          command: |
-            . venv/bin/activate
-            sleep 1
-            flask test
       - save_cache:
           paths:
             - ./venv
@@ -56,6 +50,9 @@ jobs:
       - image: buildpack-deps:trusty
     steps:
       - checkout
+      - run:
+          name: Heroku Deploy
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
       - run:
           name: Smoke test
           command: ./testbackend.sh
@@ -90,4 +87,4 @@ workflows:
             - start_test
       - buildandpush_dockerhub:
           requires:
-            - back-deploy-heroku
+            - build
