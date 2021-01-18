@@ -63,11 +63,7 @@ jobs:
       - run:
           name: Smoke test
           command: |
-          HTTPCODE=`curl -s -o /dev/null -w "%{http_code}" https://$HEROKU_APP_NAME.herokuapp.com/api/articles`
-          if [ "$HTTPCODE" -ne 200 ];then
-            echo "heroku app not responding, failing deploy"
-            exit 1
-          fi
+          ./testbackend.sh
   buildandpush_dockerhub:
     docker:
       - image: docker:17.05.0-ce-git
