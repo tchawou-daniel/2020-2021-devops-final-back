@@ -40,8 +40,6 @@ jobs:
           command: |
             . venv/bin/activate
             sleep 1
-            flask db migrate
-            flask db revision --rev-id $FLASKID
             flask db upgrade
       - run:
           name: flask test
