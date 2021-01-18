@@ -19,6 +19,15 @@ jobs:
           paths:
             - ./venv
           key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
+      - run:
+          command: |
+            . venv/bin/activate
+            python manage.py test
+      - store_artifacts:
+          path: test-reports/
+          destination: tr1
+      - store_test_results:
+          path: test-reports/
   start_test:
     docker:
       - image: circleci/python:3.7.4
@@ -71,6 +80,11 @@ jobs:
             docker tag app $DOCKER_HUB_USER/$DOCKER_HUB_APP:latest
             docker push $DOCKER_HUB_USER/$DOCKER_HUB_APP:$CIRCLE_BUILD_NUM
             docker push $DOCKER_HUB_USER/$DOCKER_HUB_APP:latest
+      - store_artifacts:
+          path: test-reports/
+          destination: tr1
+      - store_test_results:
+          path: test-reports/
 workflows:
   version: 2.1
   build_circleci:
