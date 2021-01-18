@@ -36,17 +36,11 @@ jobs:
             - v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
             - v3-dependencies-
       - run:
-          name: flask upgrade
-          command: |
-            . venv/bin/activate
-            sleep 1
-            flask db upgrade
-      - run:
           name: Run unit tests
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            python3 app/tests.py
+            python3 autoapp.py
   back-deploy-heroku:
     docker:
       - image: buildpack-deps:trusty
