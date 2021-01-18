@@ -19,10 +19,6 @@ jobs:
           paths:
             - ./venv
           key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
-      - run:
-          command: |
-            . venv/bin/activate
-            python manage.py test
       - store_artifacts:
           path: test-reports/
           destination: tr1
