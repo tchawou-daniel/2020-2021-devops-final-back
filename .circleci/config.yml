@@ -35,10 +35,6 @@ jobs:
           keys:
             - v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
             - v3-dependencies-
-      - save_cache:
-          paths:
-            - ./venv
-          key: v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
   back-deploy-heroku:
     docker:
       - image: buildpack-deps:trusty
