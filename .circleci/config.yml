@@ -40,7 +40,6 @@ jobs:
           command: |
             . venv/bin/activate
             sleep 1
-            flask db init
             flask db upgrade
       - run:
           name: flask test
