@@ -36,6 +36,12 @@ jobs:
             - v3-dependencies-{{ checksum "requirements/dev.txt" }}-{{ checksum "requirements/prod.txt" }}
             - v3-dependencies-
       - run:
+          name: flask upgrade
+          command: |
+            . venv/bin/activate
+            sleep 1
+            flask db upgrade
+      - run:
           name: Run unit tests
           command: |
             python3 -m venv venv
@@ -84,4 +90,4 @@ workflows:
             - start_test
       - buildandpush_dockerhub:
           requires:
-            - build
+            - buildandpush_dockerhub
